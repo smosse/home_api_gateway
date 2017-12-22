@@ -38,7 +38,7 @@ class index:
 
 
 if __name__ == "__main__":
-    web.config.debug = False
+    web.config.debug = True
 
     app = HomeApiGateway(urls, globals())
     app.run(port=int(config.get('global', 'port')))

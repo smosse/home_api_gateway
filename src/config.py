@@ -1,8 +1,6 @@
 import ConfigParser
 import io
 
-myEnpoints = ('/','index',)
-
 # Load the configuration file
 with open("config.cfg") as f:
     sample_config = f.read()

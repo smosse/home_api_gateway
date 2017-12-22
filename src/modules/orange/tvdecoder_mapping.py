@@ -1,6 +1,8 @@
 # this dictionary map channel to command for orange decoders.
 
 mapping = {
+    'ON' : '116',
+    'OFF' : '116',
     'CH+' : '402',
     'CH-' : '403',
     'VOL+' : '115',

@@ -30,11 +30,16 @@ class post_orangetv_action:
       channel = params.get('channel', '')
       volume = params.get('volume', '')
       state = params.get('state', '')
-
       if channel != '':
-          try:
-              int(channel)
-              epg_id = mapping[channel]
+
+          cmd = mapping.get(channel)
+
+          if cmd is None:
+              output = "{ Oups !!! No Command Found }"
+              return output
+          elif channel.isdigit():
+              epg_id = cmd
+              print "mapping %s" % epg_id
               try:
                   r = requests.get('http://%s:8080/remoteControl/cmd?operation=09&epg_id=%s&uui=1' % ( orange_ip , epg_id))
                   r.raise_for_status()
@@ -42,14 +47,18 @@ class post_orangetv_action:
               except requests.exceptions.HTTPError as err:
                   print err
                   output = "{ Oups !!! Something Goes Wrong ... }"
-              return output
-          except:
-              key = mapping[channel]
+                  return output
+
+          elif channel in ('CH+','CH-'):
+
               try:
-                  r = requests.get('http://%s:8080/remoteControl/cmd?operation=01&key=%s&mode=0' % ( orange_ip , key))
+                  r = requests.get('http://%s:8080/remoteControl/cmd?operation=01&key=%s&mode=0' % ( orange_ip , cmd))
                   r.raise_for_status()
                   output = r.content
               except requests.exceptions.HTTPError as err:
                   print err
                   output = "{ Oups !!! Something Goes Wrong ... }"
+                  return output
+          else:
+              output = "{ No Command Found }"
               return output
