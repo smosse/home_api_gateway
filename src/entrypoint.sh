@@ -24,7 +24,7 @@ echo "Configuration App ....."
 
 sed -i -e '/username =/ s/= .*/= '${USERNAME:-admin}'/' config.cfg
 sed -i -e '/password =/ s/= .*/= '${PASSWORD:-password}'/' config.cfg
-sed -i -e '/port =/ s/= .*/= '${LISTENPORT:-443}'/' config.cfg
+sed -i -e '/port =/ s/= .*/= '${LISTENPORT:-8443}'/' config.cfg
 sed -i -e '/orange_ip =/ s/= .*/= '${ORANGETVIP:-192.168.1.1}'/' config.cfg
 sed -i -e '/tv_ip =/ s/= .*/= '${SAMSUNGTVIP:-192.168.1.1}'/' config.cfg
 sed -i -e '/tv_model =/ s/= .*/= '${SAMSUNGTVMODEL:-UE40D6200}'/' config.cfg

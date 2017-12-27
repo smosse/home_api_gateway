@@ -61,7 +61,7 @@ def sendKey(skey, dataSock, appstring):
     part3 = chr(0x00) + chr(len(appstring)) + chr(0x00) + appstring + chr(len(messagepart3)) + chr(0x00) + messagepart3
     dataSock.send(part3);
 
-#KEY_0', # --TOUCHE 0
+#'KEY_0', # --TOUCHE 0
 #'KEY_1', # --TOUCHE 1
 #'KEY_2', # --TOUCHE 2
 #'KEY_3', # --TOUCHE 3
