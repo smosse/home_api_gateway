@@ -1,139 +1,87 @@
-# Docker image for [Home Api Gateway](https://github.com/jfpucheu/home_api_gateway - Home Api Gateway for Connected Objects
+# Home Api Gateway
 
-[![Build Status](https://travis-ci.org/jfpucheu/home_api_gateway.svg?branch=master)](https://travis-ci.org/jfpucheu/home_api_gateway)
-[![Docker Automated build](https://img.shields.io/docker/automated/jfpucheu/home_api_gateway.svg)](https://hub.docker.com/r/jfpucheu/home_api_gateway/)
-[![Docker Stars](https://img.shields.io/docker/stars/jfpucheu/home_api_gateway.svg)](https://hub.docker.com/r/jfpucheu/home_api_gateway/)
-[![Docker Pulls](https://img.shields.io/docker/pulls/jfpucheu/home_api_gateway.svg)](https://hub.docker.com/r/jfpucheu/home_api_gateway/)
+One Paragraph of project description goes here
 
-The image is based on [Alpine Linux](https://alpinelinux.org/) and built daily.
+## Getting Started
 
-## Supported tags
+These instructions will get you a copy of the project up and running on your local machine for development and testing purposes. See deployment for notes on how to deploy the project on a live system.
 
-- `latest` [(latest/Dockerfile)](latest/Dockerfile)
+### Prerequisites
 
-### Prerequisities
+What things you need to install the software and how to install them
 
-
-In order to run this container you'll need docker installed.
-
-* [Windows](https://docs.docker.com/windows/started)
-* [OS X](https://docs.docker.com/mac/started/)
-* [Linux](https://docs.docker.com/linux/started/)
-
-## How to use this image
-
-### Install
-
-Install the container:
-
-```shell
-docker pull jfpucheu/home_api_gateway
+```
+Give examples
 ```
 
-Alternatively, pull a specific version:
+### Installing
 
-```shell
-docker pull jfpucheu/home_api_gateway:latest
+A step by step series of examples that tell you have to get a development env running
+
+Say what the step will be
+
+```
+Give the example
 ```
 
-### Usage
+And repeat
 
-```shell
-docker run -d -p 8443:8443 jfpucheu/home-api-gateway -e USERNAME=admin -e  PASSWORD=toto
+```
+until finished
 ```
 
-#### Environment Variables
+End with an example of getting some data out of the system or using it for a little demo
 
-* `USERNAME` - Username for API Gateway (default: admin)
-* `PASSWORD` - Password for API Gateway (default: password)
-* `LISTENPORT` - Listen port for API Gateway (default: 8443)
-* `ORANGETVIP` - Orange TV Decoder Ip Address (default: 192.168.1.1)
-* `SAMSUNGTVIP` - Samsung TV Ip Address (default: 192.168.1.1)
-* `SAMSUNGTVMODEL` - Samsung TV Model (default: UE40D6200)
+## Running the tests
 
-#### Supported requests OrangeTV:
+Explain how to run the automated tests for this system
 
-Start Orange Decoder:
+### Break down into end to end tests
 
-```shell
-curl --insecure --user 'admin':'password' -H "Content-Type: application/json" -X POST -d '{"state":"ON"}' https://127.0.0.1:8443/orange/tv/
+Explain what these tests test and why
+
+```
+Give an example
 ```
 
-Select à Channel on Orange Decoder:
+### And coding style tests
 
-```shell
-curl --insecure --user 'admin':'password' -H "Content-Type: application/json" -X POST -d '{"channel":"4"}' https://127.0.0.1:8443/orange/tv/
+Explain what these tests test and why
+
+```
+Give an example
 ```
 
-or:
+## Deployment
 
-```shell
-curl --insecure --user 'admin':'password' -H "Content-Type: application/json" -X POST -d '{"channel":"CH+"}' https://127.0.0.1:8443/orange/tv/
-```
+Add additional notes about how to deploy this on a live system
 
-Switch OFF Orange Decoder:
+## Built With
 
-```shell
-curl --insecure --user 'admin':'password' -H "Content-Type: application/json" -X POST -d '{"state":"OFF"}' https://127.0.0.1:8443/orange/tv/
-```
+* [Dropwizard](http://www.dropwizard.io/1.0.2/docs/) - The web framework used
+* [Maven](https://maven.apache.org/) - Dependency Management
+* [ROME](https://rometools.github.io/rome/) - Used to generate RSS Feeds
 
-#### Supported requests: SamsunTV:
+## Contributing
 
-Key Action:
+Please read [CONTRIBUTING.md](https://gist.github.com/PurpleBooth/b24679402957c63ec426) for details on our code of conduct, and the process for submitting pull requests to us.
 
-```shell
-curl -v --insecure --user 'admin':'password!' -H "Content-Type: application/json" -X POST -d '{"key":"KEY_POWEROFF"}' https://127.0.0.1:8443/samsung/tv/
-```
+## Versioning
 
-Key List:
-
-#'KEY_0', # --TOUCHE 0
-#'KEY_1', # --TOUCHE 1
-#'KEY_2', # --TOUCHE 2
-#'KEY_3', # --TOUCHE 3
-#'KEY_4', # --TOUCHE 4
-#'KEY_5', # --TOUCHE 5
-#'KEY_6', # --TOUCHE 6
-#'KEY_7', # --TOUCHE 7
-#'KEY_8', # --TOUCHE 8
-#'KEY_9', # --TOUCHE 9
-#'KEY_UP', # --CROIX HAUT
-#'KEY_DOWN', # --CROIX BAS
-#'KEY_LEFT', # --CROIX GAUCHE
-#'KEY_RIGHT', # --CROIX DROITE
-#'KEY_MENU', # --TOUCHE MENU
-#'KEY_PRECH', # --TOUCHE PRE-CH
-#'KEY_GUIDE', # --TOUCHE GUIDE
-#'KEY_INFO', # --TOUCHE INFO
-#'KEY_RETURN', # --TOUCHE RETURN
-#'KEY_CH_LIST', # --TOUCHE CH LIST
-#'KEY_EXIT', # --TOUCHE EXIT
-#'KEY_ENTER', # --CROIX ENTER
-#'KEY_SOURCE', # --TOUCHE SOURCE
-#'KEY_AD'
-#'KEY_PLAY', # --TOUCHE PLAY
-#'KEY_PAUSE', # --TOUCHE PAUSE
-#'KEY_MUTE', # --TOUCHE MUTE
-#'KEY_PICTURE_SIZE', # --
-#'KEY_VOLUP', # --TOUCHE VOL +
-#'KEY_VOLDOWN', # --TOUCHE VOL -
-#'KEY_TOOLS', # --TOUCHE TOOLS
-#'KEY_POWEROFF', # --TOUCHE POWEROFF
-#'KEY_CHUP', # --TOUCHE PROG +
-#'KEY_CHDOWN', # --TOUCHE PROG -
-#'KEY_CONTENTS', # --TOUCHE SMART HUB
-#'KEY_W_LINK', # --TOUCHE Media P
-#'KEY_RSS', # --TOUCHE Internet
-#'KEY_MTS', # --TOUCHE Dual
-#'KEY_CAPTION', # --TOUCHE Subt
-#'KEY_REWIND', # --TOUCHE <>
-#'KEY_REC',
-#'KEY_STOP' ]) # --TOUCHE STOP
+We use [SemVer](http://semver.org/) for versioning. For the versions available, see the [tags on this repository](https://github.com/your/project/tags).
 
 ## Authors
 
-* **Jean-François PUCHEU** - *Initial work* - [jfpucheu](https://github.com/jfpucheu)
+* **Billie Thompson** - *Initial work* - [PurpleBooth](https://github.com/PurpleBooth)
+
+See also the list of [contributors](https://github.com/your/project/contributors) who participated in this project.
 
 ## License
 
-This project is licensed under the Apache 2 License - see the [LICENSE.md](LICENSE.md) file for details.
+This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details
+
+## Acknowledgments
+
+* Hat tip to anyone who's code was used
+* Inspiration
+* etc

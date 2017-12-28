@@ -19,7 +19,7 @@ RUN apk --update add --no-cache \
     && rm -rf /usr/src/app/ssl/* \
     && pip install --no-cache-dir -r requirements.txt
 
-COPY src/ .
+COPY ../src/ .
 
 RUN rm -rf /usr/src/app/ssl/*
 
