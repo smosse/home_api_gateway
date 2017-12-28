@@ -4,7 +4,7 @@ MAINTAINER jfpucheu@gmail.com
 
 WORKDIR /usr/src/app
 
-COPY requirements.txt ./
+COPY ../src/requirements.txt .
 
 # Install packages
 RUN apk --update add --no-cache \
@@ -20,6 +20,7 @@ RUN apk --update add --no-cache \
     && pip install --no-cache-dir -r requirements.txt
 
 COPY ../src/ .
+COPY entrypoint.sh .
 
 RUN rm -rf /usr/src/app/ssl/*
 
